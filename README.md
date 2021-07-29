@@ -1,17 +1,23 @@
-## My Project
+# ecs_terraform
 
-TODO: Fill this README out!
+This terraform ecs module build ecs on ec2 (with capacity provider) or fargate.
 
-Be sure to:
+This template uses a pre-built vpc module. You can update your vpc configs in the Variables file if you have a pre-existing vpc you want to use, and additional vpc will not be created if the variable is configured.
 
-* Change the title in this README
-* Edit your repository description on GitHub
+2 example services are created, 1 on EC2, the other on Fargate.
 
-## Security
+Update the variables.tf and run
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+`$ terraform plan`
+to validate your build
 
-## License
 
-This library is licensed under the MIT-0 License. See the LICENSE file.
+then
 
+`$ terraform apply` to deploy
+
+
+if you choose to run this cluster as `"fargate_only" = true` , no ec2 resources will be created.
+
+
+* The IAM role policy resource for the Fargate tasks are wildcarded as the task requires the policy to be created and the policy resource would need the task arn if not wildcarded, which causes a dependency issue.
