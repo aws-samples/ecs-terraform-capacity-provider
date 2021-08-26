@@ -21,3 +21,10 @@ if you choose to run this cluster as `"fargate_only" = true` , no ec2 resources 
 
 
 * The IAM role policy resource for the Fargate tasks are wildcarded as the task requires the policy to be created and the policy resource would need the task arn if not wildcarded, which causes a dependency issue.
+
+
+## Cleanup
+
+To remove and cleanup your deployed environment, run the command 
+`$ terraform destroy`
+this will remove all resources created by this terraform module.
